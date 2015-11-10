@@ -11,3 +11,34 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Emacs Alias
+alias emacs="/usr/local/Cellar/emacs/24.5/bin/emacs"
+export EDITOR="emacs"
+
+# Virutalenvs and wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Org Daily Notes Alias
+dailyfunc() {
+  emacs '~/Documents/daily_notes/'$(ls ~/Documents/daily_notes/ | tail -1 )
+}
+alias daily=dailyfunc
+
+alias sshsupreme="ssh octo@45.55.238.46"
+alias cdw="cd ~/Workspace/"
+alias cdp="cd ~/projects/"
+
+# Fix for tmux weird colors
+alias tmux="TERM=xterm-256color tmux"
+
+# Set to right term
+export TERM="xterm-256color"
+
+# Source tmuxinator
+[ -f /usr/local/bin/tmuxinator.zsh ] && source /usr/local/bin/tmuxinator.zsh
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
